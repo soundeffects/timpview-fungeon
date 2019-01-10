@@ -152,7 +152,7 @@ INSTALLED_APPS = [
 PINAX_BLOG_ADMIN_JS = []
 
 ADMIN_URL = "admin:index"
-CONTACT_EMAIL = "support@example.com"
+CONTACT_EMAIL = "timpviewfungeon@gmail.com"
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

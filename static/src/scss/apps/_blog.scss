@@ -42,7 +42,6 @@ body.blog {
             img {
                 width: 100%;
             }
-            margin-bottom: 20px;
         }
         p.bio {
             @extend .lead;
@@ -53,7 +52,7 @@ body.blog {
             padding: 0;
         }
         .search {
-            margin: 20px 0;
+            margin: 8px 0;
         }
         .sections-nav {
             @extend .nav;
@@ -83,14 +82,23 @@ body.blog {
     .search-input {
         @extend .input-group;
         .prepend-icon {
-            @extend .input-group-prepend;
-            span {
-                @extend .input-group-text;
-            }
+          margin: 0.6rem;
         }
         input {
-            @extend .form-control;
+            background: #eee;
+            border: none;
+            width: 60%;
         }
+        input:focus {
+          outline: 0;
+        }
+    }
+
+    .grayed {
+      padding: 1rem;
+      background: #eee;
+      border-radius: 0.8rem;
+      margin-bottom: 2rem;
     }
 
     .feeds {
@@ -99,7 +107,9 @@ body.blog {
         > a {
             @extend .btn;
             @extend .btn-sm;
-            @extend .btn-warning;
+        }
+        img {
+          width: 3.3rem;
         }
     }
 }
