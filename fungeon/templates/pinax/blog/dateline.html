@@ -1,0 +1,7 @@
+<p class="post-meta">
+    <span class="date">{% if post.published %}{{ post.published|date:"m/d/y" }}{% else %}Not published yet{% endif %}</span>
+    <span>&#8226;</span>
+    <span class="author"><a href="https://twitter.com/{{ post.author.username }}" title="@{{ post.author.username }}" class="dateline-link">{{ post.author.get_full_name }}</a></span>
+    <span>&#8226;</span>
+    <a href="{% url "pinax_blog:blog_section" post.section.slug %}" class="dateline-link"><span class="section">{{ post.section.name }}</span></a>
+</p>

@@ -1,0 +1,57 @@
+{% extends "pinax/blog/blog_base.html" %}
+
+{% load pinax_blog_tags %}
+
+{% block content %}
+  <nav class="sections-nav">
+      <a class="{% if current_section == "all" %}current-section{% endif %}" href="{{ blog_url }}">All</a>
+      {% blog_sections as sections %}
+      {% for section in sections %}
+          {% if scoper_lookup %}
+              {% url "pinax_blog:blog_section" scoper_lookup section.slug as section_url %}
+          {% else %}
+              {% url "pinax_blog:blog_section" section.slug as section_url %}
+          {% endif %}
+          <a class="{% if current_section == section %}current-section{% endif %}" href="{{ section_url }}">{{ section.name }}</a>
+      {% endfor %}
+      <div class="search">
+          {% if current_section == "all" %}
+              {% if scoper_lookup %}
+                  {% url "pinax_blog:blog" scoper_lookup as search_url %}
+              {% else %}
+                  {% url "pinax_blog:blog" as search_url %}
+              {% endif %}
+          {% else %}
+              {% if scoper_lookup %}
+                  {% url "pinax_blog:blog_section" scoper_lookup current_section.slug as search_url %}
+              {% else %}
+                  {% url "pinax_blog:blog_section" current_section.slug as search_url %}
+              {% endif %}
+          {% endif %}
+
+          <form class="form-search" action="{{ search_url }}">
+              <div class="search-input">
+                  <div class="prepend-icon"><span><i class="fas fa-search"></i></span></div>
+                  <input type="search" placeholder="Search..." name="q" value="{{ search_term|default:"" }}">
+              </div>
+          </form>
+      </div>
+  </nav>
+    {% if post_list %}
+        <div class="post-list">
+            {% for post in post_list %}
+                <div class="post">
+                    <header class="header-entry">
+                        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                        {% include "pinax/blog/dateline.html" %}
+                        <div class="teaser">{{ post.teaser_html|safe }}</div>
+                    </header>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <section>
+            No results found.
+        </section>
+    {% endif %}
+{% endblock %}

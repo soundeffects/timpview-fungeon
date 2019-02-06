@@ -1,35 +1,59 @@
-import os
+# LOCAL SETTINGS - SAMPLE
+DEBUG = True
 
+DATABASES = {
+  "default": {
+    "ENGINE": "django.db.backends.sqlite3",
+      "NAME": "dev.db",
+  }
+}
+
+ALLOWED_HOSTS = ["localhost"]
+
+TIME_ZONE = "America/Denver"
+
+LANGUAGE_CODE = "en-us"
+
+SECRET_KEY = "8p#n50)g9vj)twmkaz%-0$1+177to23--=_a3-+&+$3s%&_upk"
+
+CONTACT_EMAIL = "timpviewfungeon@gmail.com"
+
+# A sample logging configuration. The only tangible logging
+# performed by this configuration is to send an email to
+# the site admins on every HTTP 500 error when DEBUG=False.
+# See http://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+  "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {
+      "require_debug_false": {
+        "()": "django.utils.log.RequireDebugFalse"
+      }
+    },
+    "handlers": {
+      "mail_admins": {
+        "level": "ERROR",
+          "filters": ["require_debug_false"],
+          "class": "django.utils.log.AdminEmailHandler"
+      }
+    },
+    "loggers": {
+      "django.request": {
+        "handlers": ["mail_admins"],
+        "level": "ERROR",
+          "propagate": True,
+        },
+  }
+}
+
+
+# STATIC SETTINGS
+import os
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
 BASE_DIR = PACKAGE_ROOT
-
-DEBUG = True
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "dev.db",
-    }
-}
-
-ALLOWED_HOSTS = [
-    "localhost",
-]
-
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
-# timezone as the operating system.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
-TIME_ZONE = "America/Denver"
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en-us"
 
 SITE_ID = int(os.environ.get("SITE_ID", 1))
 
@@ -76,9 +100,6 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = "8p#n50)g9vj)twmkaz%-0$1+177to23--=_a3-+&+$3s%&_upk"
 
 TEMPLATES = [
     {
@@ -152,36 +173,6 @@ INSTALLED_APPS = [
 PINAX_BLOG_ADMIN_JS = []
 
 ADMIN_URL = "admin:index"
-CONTACT_EMAIL = "timpviewfungeon@gmail.com"
-
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "filters": {
-        "require_debug_false": {
-            "()": "django.utils.log.RequireDebugFalse"
-        }
-    },
-    "handlers": {
-        "mail_admins": {
-            "level": "ERROR",
-            "filters": ["require_debug_false"],
-            "class": "django.utils.log.AdminEmailHandler"
-        }
-    },
-    "loggers": {
-        "django.request": {
-            "handlers": ["mail_admins"],
-            "level": "ERROR",
-            "propagate": True,
-        },
-    }
-}
 
 FIXTURE_DIRS = [
     os.path.join(PROJECT_ROOT, "fixtures"),

@@ -19,8 +19,12 @@ body.blog {
             }
             .more {
                 text-align: right;
-                margin-bottom: 40px;
             }
+            border: 0.1em solid white;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            border-radius: 1em;
+            margin: 1em;
+            padding: 0.8em;
         }
     }
     .post-detail {
@@ -36,6 +40,10 @@ body.blog {
         .teaser {
             @extend .lead;
         }
+        img {
+          width: 100%;
+        }
+        margin-top: 1.5em;
     }
     .sidebar {
         .profile-picture {
@@ -45,60 +53,63 @@ body.blog {
         }
         p.bio {
             @extend .lead;
+            strong {
+              display: block;
+            }
         }
         code {
             background: inherit;
             font-size: 0.7em;
             padding: 0;
         }
-        .search {
-            margin: 8px 0;
-        }
-        .sections-nav {
-            @extend .nav;
-            @extend .nav-pills;
-            @extend .flex-column;
-            a {
-                @extend .nav-link;
-                color: $gray-700;
-            }
-            a:hover {
-                background: $gray-200;
-            }
-            a.current-section,
-            a.current-section:hover {
-                background: $primary;  // @extend .active changes blog post teaser to have color: white;
-                color: white;
-            }
-            .heading {
-                padding: 0.5rem 1rem;
-                text-transform: uppercase;
-                color: $gray-500;
-                letter-spacing: 0.1em;
-            }
-        }
     }
 
-    .search-input {
-        @extend .input-group;
-        .prepend-icon {
-          margin: 0.6rem;
-        }
-        input {
-            background: #eee;
-            border: none;
-            width: 60%;
-        }
-        input:focus {
-          outline: 0;
-        }
-    }
-
-    .grayed {
-      padding: 1rem;
+    .search {
       background: #eee;
-      border-radius: 0.8rem;
-      margin-bottom: 2rem;
+      display: inline-block;
+      border-radius: 0.5em;
+      float: right;
+      margin: 0;
+
+      .search-input {
+          @extend .input-group;
+          .prepend-icon {
+            margin: 0.6rem;
+          }
+          input {
+              background: #eee;
+              border: none;
+              width: 60%;
+          }
+          input:focus {
+            outline: 0;
+          }
+      }
+    }
+
+    .sections-nav {
+        @extend .nav-pills;
+        a {
+            @extend .nav-link;
+            color: $gray-700;
+            display: inline;
+        }
+        a:hover {
+            background: $gray-200;
+        }
+        a.current-section,
+        a.current-section:hover {
+            background: $primary;  // @extend .active changes blog post teaser to have color: white;
+            color: white;
+        }
+        .heading {
+            padding: 0.5rem 1rem;
+            text-transform: uppercase;
+            color: $gray-500;
+            letter-spacing: 0.1em;
+        }
+        margin-bottom: 2em;
+        margin-top: 1em;
     }
 
     .feeds {
@@ -111,5 +122,9 @@ body.blog {
         img {
           width: 3.3rem;
         }
+    }
+
+    .dateline-link {
+      color: gray;
     }
 }
