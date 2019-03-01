@@ -48,6 +48,6 @@
     "npm": "^6.6.0",
     "onchange": "3.3.0",
     "uglify-js": "3.3.9",
-    "watchify": "3.10.0"
+    "watchify": "^3.11.1"
   }
 }
