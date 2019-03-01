@@ -2,9 +2,15 @@
 
 {% load pinax_blog_tags %}
 
+{% block head_title_base %}{{ post.title }}{{ SITE_NAME }}{% endblock %}
+
 {% block content %}
+  <p class="mobile-bio">
+      <strong>The Timpview Fungeon</strong>
+      Your daily dose of fun, force-fed.
+  </p>
   <nav class="sections-nav">
-      <a class="{% if current_section == "all" %}current-section{% endif %}" href="{{ blog_url }}">All</a>
+      <a class="{% if current_section == "all" %}current-section{% endif %}" href="{% url "pinax_blog:blog" %}">All</a>
       {% blog_sections as sections %}
       {% for section in sections %}
           {% if scoper_lookup %}
@@ -40,12 +46,13 @@
     {% if post_list %}
         <div class="post-list">
             {% for post in post_list %}
-                <div class="post">
-                    <header class="header-entry">
-                        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                        {% include "pinax/blog/dateline.html" %}
-                        <div class="teaser">{{ post.teaser_html|safe }}</div>
-                    </header>
+                <div class="post" style="background-image:url(/site_media/media/{{ post.image_set.primary_image.image }})">
+                    <div class="white">
+                      <header class="header-entry">
+                          <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                          {% include "pinax/blog/dateline.html" %}
+                      </header>
+                      </div>
                 </div>
             {% endfor %}
         </div>

@@ -7,6 +7,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path("", include("pinax.blog.urls", namespace="pinax_blog")),
+    path("ajax/images/", include("pinax.images.urls", namespace="pinax_images")),
     path("admin/", admin.site.urls),
 ]
 

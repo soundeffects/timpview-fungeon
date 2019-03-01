@@ -1,4 +1,5 @@
 {% extends "pinax/blog/blog_base.html" %}
+{% load staticfiles %}
 
 {% block head_title_base %}{{ post.title }} | {{ SITE_NAME }}{% endblock %}
 
@@ -6,11 +7,22 @@
     <div class="post-detail">
         <div class="post">
             <header class="header-entry">
+
                 <h2>{{ post.title }}</h2>
-                {% include "pinax/blog/dateline_stale.html" %}
-                <div class="teaser">{{ post.teaser_html|safe }}</div>
+                {% include "pinax/blog/dateline.html" %}
             </header>
 
+              <figure>
+              {% if "iframe" in post.teaser_html %}
+                <div class="frame">
+                  <img src="{% static "images/16-9.png" %}" />
+                  {{ post.teaser_html|safe }}
+                </div>
+              {% else %}
+                {{ post.teaser_html|safe }}
+              {% endif %}
+            </figure>
+            
             <div class="content">{{ post.content_html|safe }}</div>
         </div>
     </div>

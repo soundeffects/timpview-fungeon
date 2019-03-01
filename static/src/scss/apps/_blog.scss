@@ -1,4 +1,15 @@
+$mobile-break: 767px;
+
 body.blog {
+    .mobile-bio {
+      @media screen and (min-width: $mobile-break) {
+        display: none;
+      }
+      @extend .lead;
+      strong {
+        display: block;
+      }
+    }
     .post-list {
         .post {
             h2 {
@@ -7,24 +18,32 @@ body.blog {
                 }
                 a:hover {
                     text-decoration: none;
-                    color: $gray-600;
+                    color: $gray-800;
                 }
             }
-            .post-meta {
-                color: $gray-600;
-                font-style: italic;
+            .dateline-link {
+              color: $gray-700;
             }
-            .teaser {
-                @extend .lead;
+            .white {
+              background-color: rgba(255, 255, 255, 0.5);
+              padding: 0.6em;
+              border-radius: 1em;
+            }
+            .header-entry {
+              margin-left: 0.6em;
+            }
+            .post-meta {
+                font-style: italic;
             }
             .more {
                 text-align: right;
             }
-            border: 0.1em solid white;
             box-shadow: 0 1px 4px rgba(0,0,0,0.3);
             border-radius: 1em;
             margin: 1em;
-            padding: 0.8em;
+            background-position: center;
+            background-size: cover;
+            text-shadow: 1px 1px 12px rgba(255, 255, 255, 0.6);
         }
     }
     .post-detail {
@@ -39,28 +58,50 @@ body.blog {
         }
         .teaser {
             @extend .lead;
+            font-size: 20px;
+            color: $gray-700;
         }
         img {
-          width: 100%;
+          height: 20em;
+          display: block;
+          margin: 2em auto;
         }
-        margin-top: 1.5em;
+        figure img {
+          width: 100%;
+          height: auto;
+        }
+        figure p {
+          font-size: 1.3em;
+          color: $gray-700;
+          font-weight: 300;
+        }
+        .dateline-link {
+          color: gray;
+        }
+        margin-top: 0.3em;
+        @media screen and (min-width: $mobile-break) {
+          margin-top: 1.5em;
+        }
     }
     .sidebar {
         .profile-picture {
-            img {
-                width: 100%;
+          img {
+            @media screen and (min-width: $mobile-break) {
+              width: 100%;
             }
+            @media screen and (max-width: $mobile-break) {
+              width: 8em;
+            }
+          }
         }
         p.bio {
-            @extend .lead;
-            strong {
-              display: block;
-            }
-        }
-        code {
-            background: inherit;
-            font-size: 0.7em;
-            padding: 0;
+          @media screen and (max-width: $mobile-break) {
+            display: none;
+          }
+          @extend .lead;
+          strong {
+            display: block;
+          }
         }
     }
 
@@ -68,8 +109,7 @@ body.blog {
       background: #eee;
       display: inline-block;
       border-radius: 0.5em;
-      float: right;
-      margin: 0;
+      margin: 0 1em;
 
       .search-input {
           @extend .input-group;
@@ -113,18 +153,30 @@ body.blog {
     }
 
     .feeds {
-        text-align: right;
-        margin: 20px 0;
-        > a {
-            @extend .btn;
-            @extend .btn-sm;
-        }
-        img {
-          width: 3.3rem;
-        }
+      text-align: right;
+      margin: 1em 0;
+      img {
+        width: 3.3rem;
+      }
+      @media screen and (max-width: $mobile-break) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 1.4em;
+        margin-right: 2em;
+      }
     }
 
-    .dateline-link {
-      color: gray;
+    .frame {
+      position: relative;
+    }
+
+    iframe {
+      border: none;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
     }
 }
