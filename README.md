@@ -1,3 +1,2 @@
 # fungeon
-
-A website for Timpview Journalism's one and only Fungeon.
+Website for Timpview Fungeon. Built with Pinax Blog, check out their site if you need documentation.
