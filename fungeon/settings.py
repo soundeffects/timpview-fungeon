@@ -1,14 +1,12 @@
 # LOCAL SETTINGS - SAMPLE
 DEBUG = True
 
+import dj_database_url
 DATABASES = {
-  "default": {
-    "ENGINE": "django.db.backends.sqlite3",
-      "NAME": "dev.db",
-  }
+    "default": dj_database_url.config()
 }
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost", "timpview-fungeon.herokuapp.com"]
 
 TIME_ZONE = "America/Denver"
 
